@@ -2,16 +2,17 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <em>Cell states, microproteins, and the molecular logic of rejuvenation.</em>
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p><strong>Altos Labs</strong></p>
+    <p>Bay Area Institute of Science</p>
+    <p>2400 Bridge Parkway</p>
+    <p>Redwood City, CA 94065</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -22,13 +23,20 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  enabled: false
+  scrollable: true
+  limit: 3
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+We study how cells decide what to become — and whether those decisions can be undone.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Most disease is a deviation from a healthy cellular state, and most aging is the accumulation of such deviations. Our long-term aim is to read out, write, and ultimately reverse these state transitions in living cells. Our work spans four connected directions:
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+- **[Rejuvenation and disease reversal]({{ '/research/#rejuvenation-and-disease-reversal' | relative_url }})** — restoring cells to the molecular configurations that define youth and health.
+- **[Cell states]({{ '/research/#cell-states-in-development-and-disease' | relative_url }})** — the units of biology that determine what a cell does and how it can change.
+- **[The dark proteome]({{ '/research/#the-dark-proteome--microproteins-as-state-regulators' | relative_url }})** — small, often overlooked proteins that we believe gate many cell-state transitions.
+- **[High-throughput technology]({{ '/research/#high-throughput-technology-development' | relative_url }})** — methods that let us read and rewrite cell state at the scale biology actually operates on.
+
+The lab is based at [Altos Labs](https://altoslabs.com) in Redwood City, and we maintain an academic appointment at the [University of Texas Southwestern Medical Center](https://www.utsouthwestern.edu) (Department of Pharmacology, Cecil H. and Ida Green Center, and Harold C. Simmons Comprehensive Cancer Center).
+
+If you're a prospective trainee, our [Team page]({{ '/team/#joining-the-lab' | relative_url }}) explains what we look for and how to apply.

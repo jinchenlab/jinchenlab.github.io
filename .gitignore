@@ -15,3 +15,7 @@ node_modules/
 output/playwright/
 test-results/
 vendor
+
+# Do not commit personal PDFs left at repo root (e.g., CVs with contact info).
+# Legitimate PDFs under assets/pdf/ are still tracked.
+/*.pdf
