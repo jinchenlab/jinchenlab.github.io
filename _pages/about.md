@@ -6,13 +6,9 @@ subtitle: <em>Cell states, microproteins, and the molecular logic of rejuvenatio
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p><strong>Altos Labs</strong></p>
-    <p>Bay Area Institute of Science</p>
-    <p>2400 Bridge Parkway</p>
-    <p>Redwood City, CA 94065</p>
+  image: # temporarily blank — see /contact/ for lab address. Re-enable once we have a headshot.
+  image_circular: false
+  more_info:
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
