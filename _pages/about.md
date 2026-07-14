@@ -28,6 +28,8 @@ latest_posts:
   limit: 3
 ---
 
+<img src="{{ '/assets/img/hero-umap.svg' | relative_url }}" alt="Chen Lab research map — four connected clusters representing rejuvenation, cell states, dark proteome, and high-throughput technology" style="width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto 2rem auto;" />
+
 We study how cells decide what to become — and whether those decisions can be undone.
 
 Most disease is a deviation from a healthy cellular state, and most aging is the accumulation of such deviations. Our long-term aim is to read out, write, and ultimately reverse these state transitions in living cells. Our work spans four connected directions:
