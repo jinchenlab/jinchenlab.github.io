@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const news = [
+  { date: 'May 19, 2026',  text: 'A new site, and a sharper focus. Since moving to Altos Labs in 2022, our research has expanded from translational control into the broader question of how cell states are set, maintained, and reversed — with microproteins and high-throughput perturbation as our two main levers. The website is finally caught up with where the lab actually is.' },
+  { date: 'Mar 5, 2026',   text: 'Jin gave an invited talk at Perturb2026 in Vienna — Large-scale Perturb-seq in primary human disease models: disease-reversal programs and virtual cell perturbation mapping. First full public airing of the lab’s virtual-cell effort.' },
+  { date: 'Jan 30, 2026',  text: 'Our paper on the functional landscape of non-canonical open reading frames in coordinating cell fate is out in Molecular Cell. Congratulations to Kaiyuan and the team — this is the first flagship paper from the Altos-era lab.' },
+  { date: 'Nov 4, 2025',   text: 'Yi-Hsuan Lo’s paper on large-scale CRISPR screening in primary human 3D gastric organoids is out in Nature Communications — a long-running collaboration with the Kuo lab at Stanford.' },
+  { date: 'Jun 15, 2025',  text: 'Jin gave an invited talk at the Keystone Symposium "Microproteins: from Discovery to Applications" — Coding or non-coding? Illuminating the "dark matter" of the proteome.' },
+];
+---
+<BaseLayout title="News · Chen Lab" active="news" description="Recent updates from the Chen Lab — papers, talks, personnel.">
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="page-hero__eyebrow">News</div>
+      <h1 class="page-hero__title">What&rsquo;s happening in the lab</h1>
+      <p class="page-hero__lede">
+        Papers, talks, personnel moves, and other things worth writing down.
+      </p>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <div class="timeline__inner">
+      {news.map((n) => (
+        <article class="timeline__row">
+          <div class="timeline__date">{n.date}</div>
+          <p class="timeline__text">{n.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .page-hero { padding: 88px var(--content-padding) 24px; }
+    .page-hero__inner { max-width: var(--content-max); margin: 0 auto; }
+    .page-hero__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); margin-bottom: 12px; }
+    .page-hero__title { font-family: var(--font-heading); font-weight: 500; font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin: 0; }
+    .page-hero__lede { font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--body); max-width: 620px; margin: 20px 0 0; }
+
+    .timeline { padding: 40px var(--content-padding) var(--section-vertical); }
+    .timeline__inner { max-width: 820px; margin: 0 auto; }
+    .timeline__row { display: grid; grid-template-columns: 120px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--hairline); }
+    .timeline__row:last-child { border-bottom: 1px solid var(--hairline); }
+    .timeline__date { font-family: var(--font-mono); font-size: 13px; color: var(--teal-dark); padding-top: 4px; }
+    .timeline__text { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); margin: 0; }
+
+    @media (max-width: 780px) {
+      .timeline__row { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+      .page-hero__title { font-size: 36px; }
+    }
+  </style>
+</BaseLayout>

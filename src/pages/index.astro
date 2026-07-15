@@ -1,0 +1,492 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Waddington from '../components/Waddington.astro';
+
+const selectedPubs = [
+  { year: '2026', venue: 'Molecular Cell', authors: 'Zhu K, Li WC, Liu J, … Chen J', title: 'Functional landscape of non-canonical open reading frames in coordinating cell fate.' },
+  { year: '2025', venue: 'Nature Communications', authors: 'Lo YH, … Chen J*, Kuo CJ*', title: 'Large-scale CRISPR screening in primary human 3D gastric organoids enables comprehensive dissection of gene-drug interactions.', note: '* co-corresponding' },
+  { year: '2022', venue: 'Trends in Cell Biology', authors: 'Wright BW, Yi Z, Weissman JS, Chen J', title: 'The dark proteome: translation from noncanonical open reading frames.' },
+  { year: '2021', venue: 'Cell', authors: 'Nuñez JK, Chen J, … Weissman JS', title: 'Genome-wide programmable transcriptional memory by CRISPR-based epigenome editing.' },
+  { year: '2020', venue: 'Science', authors: 'Chen J, Brunner A-D, … Weissman JS', title: 'Pervasive functional translation of noncanonical open reading frames.' },
+];
+
+const latestNews = [
+  { date: 'May 19, 2026',   text: 'A new site, and a sharper focus. Our research has expanded from translational control into cell states, the dark proteome, rejuvenation, and the tools that connect them.' },
+  { date: 'Mar 5, 2026',    text: 'Jin gave an invited talk at Perturb2026 (Vienna) — the first public airing of the lab’s virtual-cell effort.' },
+  { date: 'Jan 30, 2026',   text: 'Our paper on the functional landscape of non-canonical ORFs in coordinating cell fate is out in Molecular Cell.' },
+];
+
+const honors = [
+  { text: 'NIH Director’s New Innovator Award', year: '2022' },
+  { text: 'Searle Scholar Award', year: '2022' },
+  { text: 'UT Southwestern Endowed Scholar', year: '2020' },
+  { text: 'CPRIT First Time Faculty Award', year: '2020' },
+  { text: 'NIH K99/R00 Pathway to Independence', year: '2019' },
+  { text: 'Jane Coffin Childs Postdoctoral Fellowship', year: '2016' },
+  { text: 'Stanford Bio-X Interdisciplinary Fellowship', year: '2012' },
+  { text: 'Henry Prentiss Becton Prize (Yale)', year: '2010' },
+];
+---
+<BaseLayout title="Chen Lab · Altos Labs" active="research">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__gradient" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__eyebrow">
+        <span class="hero__dot" aria-hidden="true"></span>
+        Jin Chen Lab · Altos Labs
+      </div>
+      <h1 class="hero__title">Functional genomics of rejuvenation</h1>
+      <p class="hero__lede">
+        We build large-scale functional genomics technologies to find the causal regulators of
+        cell state — the programs that drive aging and disease, and the programs that can
+        reverse them.
+      </p>
+      <div class="hero__meta">
+        <span>Bay Area Institute of Science</span>
+        <span class="hero__meta-dot" aria-hidden="true"></span>
+        <span>Redwood City, California</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MISSION BANNER ===================== -->
+  <section class="mission">
+    <div class="mission__inner">
+      <div class="mission__card">
+        <span class="mission__pill">Our mission</span>
+        <span class="mission__text">
+          Restoring cell health and resilience to reverse disease, injury, and the disabilities
+          that occur throughout life.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OVERVIEW + WADDINGTON ===================== -->
+  <section class="overview">
+    <div class="overview__inner">
+      <div class="overview__grid">
+        <div class="overview__label">What we do</div>
+        <p class="overview__statement">
+          Cells move between states — the transitions that define development, and that go
+          wrong in aging and disease. We ask what causally controls those trajectories, from
+          the &ldquo;dark proteome&rdquo; of uncharacterized microproteins to genome-wide
+          regulatory networks, and we build the high-throughput tools needed to read and
+          rewrite them.
+        </p>
+      </div>
+      <Waddington />
+    </div>
+  </section>
+
+  <!-- ===================== RESEARCH AREAS ===================== -->
+  <section class="research">
+    <div class="research__inner">
+      <div class="research__header">
+        <div class="research__eyebrow">Research areas</div>
+        <h2 class="research__title">Four directions, one question: what controls cell state?</h2>
+      </div>
+      <div class="research__grid">
+
+        <!-- 01 Rejuvenation and disease reversal -->
+        <article class="area">
+          <div class="area__figure">
+            <svg viewBox="0 0 320 120" role="img" aria-label="An aged cell and a healthy cell, with aging pushing one way and rejuvenation reversing it">
+              <defs>
+                <marker id="agedHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#C5CAC8"></path></marker>
+                <marker id="revHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#259851"></path></marker>
+              </defs>
+              <g transform="translate(72,60)">
+                <circle r="26" fill="#E9F7F5" stroke="#2E8E84" stroke-width="1.5"></circle>
+                <circle r="10" cx="-4" cy="-4" fill="#68D391"></circle>
+                <circle r="3" cx="9" cy="6" fill="#259851"></circle>
+                <circle r="2.5" cx="-11" cy="10" fill="#259851"></circle>
+                <text x="0" y="46" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" font-weight="500" fill="#1F1F1F">healthy</text>
+              </g>
+              <g transform="translate(248,60)">
+                <circle r="26" fill="#F6F6F6" stroke="#9AA09E" stroke-width="1.5"></circle>
+                <circle r="8" cx="-4" cy="-4" fill="#B4B2A9"></circle>
+                <circle r="2.5" cx="11" cy="4" fill="#888780"></circle>
+                <circle r="2" cx="-12" cy="8" fill="#888780"></circle>
+                <path d="M -14 -14 Q -8 -18 -2 -12" fill="none" stroke="#9AA09E" stroke-width="1" stroke-dasharray="1 2"></path>
+                <text x="0" y="46" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" font-weight="500" fill="#1F1F1F">aged</text>
+              </g>
+              <path d="M 96 40 C 150 24 170 24 224 40" fill="none" stroke="#C5CAC8" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#agedHead)"></path>
+              <text x="160" y="22" text-anchor="middle" fill="#9AA09E" font-family="Figtree, sans-serif" font-size="11" font-weight="600">aging</text>
+              <path d="M 224 80 C 170 96 150 96 96 80" fill="none" stroke="#259851" stroke-width="2.5" marker-end="url(#revHead)"></path>
+              <text x="160" y="110" text-anchor="middle" fill="#259851" font-family="Figtree, sans-serif" font-size="11" font-weight="600">rejuvenation</text>
+            </svg>
+          </div>
+          <div class="area__num">01</div>
+          <h3 class="area__title">Rejuvenation and disease reversal</h3>
+          <p class="area__desc">
+            Aging and many diseases share a common signature: cells occupy states they could
+            once return from but no longer do. We ask what minimum perturbation restores a
+            cell to a younger, more functional state.
+          </p>
+          <div class="area__tags"><span class="tag">rejuvenation</span><span class="tag">disease reversal</span><span class="tag">reprogramming</span></div>
+        </article>
+
+        <!-- 02 Cell states in development and disease -->
+        <article class="area">
+          <div class="area__figure">
+            <svg viewBox="0 0 320 120" role="img" aria-label="Three labeled state clusters A, B, C joined by a curved trajectory arrow">
+              <defs>
+                <marker id="trajHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E8E84"></path></marker>
+              </defs>
+              <g fill="#68D391">
+                <circle cx="60" cy="72" r="4"/><circle cx="52" cy="80" r="3"/><circle cx="68" cy="82" r="3"/><circle cx="58" cy="66" r="3"/><circle cx="72" cy="74" r="3"/>
+                <circle cx="48" cy="72" r="2.5"/><circle cx="62" cy="86" r="2.5"/>
+              </g>
+              <text x="60" y="52" text-anchor="middle" font-family="Figtree, sans-serif" font-size="12" font-weight="600" fill="#1F1F1F">A</text>
+
+              <g fill="#B48CFB">
+                <circle cx="160" cy="52" r="4"/><circle cx="152" cy="60" r="3"/><circle cx="168" cy="60" r="3"/><circle cx="158" cy="46" r="3"/><circle cx="172" cy="54" r="3"/>
+                <circle cx="148" cy="52" r="2.5"/><circle cx="162" cy="66" r="2.5"/>
+              </g>
+              <text x="160" y="32" text-anchor="middle" font-family="Figtree, sans-serif" font-size="12" font-weight="600" fill="#1F1F1F">B</text>
+
+              <g fill="#F1D24F">
+                <circle cx="260" cy="82" r="4"/><circle cx="252" cy="90" r="3"/><circle cx="268" cy="88" r="3"/><circle cx="258" cy="76" r="3"/><circle cx="272" cy="82" r="3"/>
+                <circle cx="248" cy="82" r="2.5"/><circle cx="262" cy="96" r="2.5"/>
+              </g>
+              <text x="260" y="112" text-anchor="middle" font-family="Figtree, sans-serif" font-size="12" font-weight="600" fill="#1F1F1F">C</text>
+
+              <path d="M 80 68 Q 120 30 155 50 Q 195 70 240 82" fill="none" stroke="#2E8E84" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#trajHead)"></path>
+            </svg>
+          </div>
+          <div class="area__num">02</div>
+          <h3 class="area__title">Cell states in development and disease</h3>
+          <p class="area__desc">
+            Cell state — not just cell type — is the level at which biology operates. We build
+            a quantitative grammar of states: how they are defined, how they transition, and
+            which transitions are reversible.
+          </p>
+          <div class="area__tags"><span class="tag">single-cell</span><span class="tag">trajectories</span><span class="tag">regulatory networks</span></div>
+        </article>
+
+        <!-- 03 Dark proteome / microproteins -->
+        <article class="area">
+          <div class="area__figure">
+            <svg viewBox="0 0 320 120" role="img" aria-label="An mRNA transcript with 5-prime and 3-prime ends. A gray canonical coding region and a highlighted green hidden ORF, with a small green peptide chain drawn below the hidden ORF.">
+              <text x="16" y="30" font-family="Source Code Pro, monospace" font-size="10" fill="#888780">5&prime;</text>
+              <text x="292" y="30" font-family="Source Code Pro, monospace" font-size="10" fill="#888780">3&prime;</text>
+              <line x1="30" y1="42" x2="290" y2="42" stroke="#B4B2A9" stroke-width="2"></line>
+              <rect x="60" y="34" width="80" height="16" fill="#D6D6D6" rx="2"></rect>
+              <text x="100" y="45" text-anchor="middle" font-family="Figtree, sans-serif" font-size="9" font-weight="500" fill="#545B59">canonical CDS</text>
+              <rect x="180" y="34" width="30" height="16" fill="#259851" rx="2"></rect>
+              <text x="195" y="45" text-anchor="middle" font-family="Figtree, sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF">µORF</text>
+              <path d="M 195 55 L 195 72" stroke="#259851" stroke-width="1.4" stroke-dasharray="2 2" fill="none"></path>
+              <g transform="translate(150,80)">
+                <line x1="0" y1="10" x2="90" y2="10" stroke="#68D391" stroke-width="1"></line>
+                <circle cx="8"  cy="10" r="4" fill="#259851"></circle>
+                <circle cx="24" cy="10" r="4" fill="#259851"></circle>
+                <circle cx="40" cy="10" r="4" fill="#259851"></circle>
+                <circle cx="56" cy="10" r="4" fill="#259851"></circle>
+                <circle cx="72" cy="10" r="4" fill="#259851"></circle>
+                <circle cx="86" cy="10" r="4" fill="#259851"></circle>
+                <text x="45" y="30" text-anchor="middle" font-family="Figtree, sans-serif" font-size="10" font-weight="600" fill="#259851">microprotein</text>
+              </g>
+            </svg>
+          </div>
+          <div class="area__num">03</div>
+          <h3 class="area__title">The dark proteome — microproteins as state regulators</h3>
+          <p class="area__desc">
+            Thousands of small proteins are translated from regions once thought non-coding.
+            We ask systematically which microproteins control cell-state transitions during
+            aging, regeneration, and dedifferentiation.
+          </p>
+          <div class="area__tags"><span class="tag">non-canonical ORFs</span><span class="tag">ribosome profiling</span><span class="tag">mass spec</span></div>
+        </article>
+
+        <!-- 04 High-throughput technology -->
+        <article class="area">
+          <div class="area__figure">
+            <svg viewBox="0 0 320 120" role="img" aria-label="A Perturb-seq heatmap grid showing cells by genes, with one perturbed gene column outlined.">
+              <text x="16" y="18" font-family="Figtree, sans-serif" font-size="9" font-weight="600" fill="#545B59">cells</text>
+              <text x="290" y="112" font-family="Figtree, sans-serif" font-size="9" font-weight="600" fill="#545B59">genes</text>
+              {(() => {
+                const cellsRow = 7;
+                const genesCol = 12;
+                const gridX = 40;
+                const gridY = 28;
+                const cellSize = 10;
+                const gap = 2;
+                const focusColumn = 8;
+                const rects: any[] = [];
+                const palette = ['#F6F6F6', '#E9F7F5', '#C6EDDE', '#7BD6B3', '#4DBE96', '#2E8E84', '#1D6E56', '#0F5040'];
+                let seed = 0.37;
+                const rand = () => {
+                  seed = (seed * 9301 + 49297) % 233280;
+                  return seed / 233280;
+                };
+                for (let r = 0; r < cellsRow; r++) {
+                  for (let c = 0; c < genesCol; c++) {
+                    let intensity = Math.floor(rand() * 4);
+                    if (c === focusColumn) intensity = 4 + Math.floor(rand() * 3);
+                    const color = palette[intensity];
+                    rects.push({ x: gridX + c * (cellSize + gap), y: gridY + r * (cellSize + gap), fill: color });
+                  }
+                }
+                return rects;
+              })().map((rc) => (
+                <rect x={rc.x} y={rc.y} width="10" height="10" fill={rc.fill} rx="1.5"></rect>
+              ))}
+              <rect x={40 + 8 * 12 - 2} y="26" width="14" height={7 * 12 - 6} fill="none" stroke="#259851" stroke-width="1.5" rx="2"></rect>
+              <text x={40 + 8 * 12 + 5} y="24" text-anchor="middle" font-family="Figtree, sans-serif" font-size="9" font-weight="600" fill="#259851">perturbed</text>
+            </svg>
+          </div>
+          <div class="area__num">04</div>
+          <h3 class="area__title">High-throughput technology development</h3>
+          <p class="area__desc">
+            Answering the above at scale requires new tools. We develop CRISPR, sequencing,
+            and imaging methods that let us interrogate microproteins, translation, and
+            state transitions in millions of cells in parallel.
+          </p>
+          <div class="area__tags"><span class="tag">CRISPR screens</span><span class="tag">Perturb-seq</span><span class="tag">virtual cell</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELECTED PUBLICATIONS ===================== -->
+  <section class="pubs">
+    <div class="pubs__inner">
+      <div class="pubs__header">
+        <div class="pubs__eyebrow">Selected publications</div>
+        <a href="/publications/" class="pubs__all">All publications →</a>
+      </div>
+      <ol class="pubs__list">
+        {selectedPubs.map((p) => (
+          <li class="pubs__row">
+            <div class="pubs__year">{p.year}</div>
+            <div class="pubs__body">
+              <div class="pubs__title">{p.title}</div>
+              <div class="pubs__meta">
+                <span class="pubs__authors">{p.authors}</span>
+                <span class="pubs__venue">{p.venue}</span>
+                {p.note && <span class="pubs__note">{p.note}</span>}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== LATEST NEWS ===================== -->
+  <section class="news">
+    <div class="news__inner">
+      <div class="news__header">
+        <div class="news__eyebrow">Latest news</div>
+        <a href="/news/" class="news__all">All news →</a>
+      </div>
+      <div class="news__grid">
+        {latestNews.map((n) => (
+          <article class="news__card">
+            <div class="news__date">{n.date}</div>
+            <p class="news__text">{n.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HONORS ===================== -->
+  <section class="honors">
+    <div class="honors__inner">
+      <div class="honors__label">Honors &amp; support</div>
+      <div class="honors__chips">
+        {honors.map((h) => (
+          <span class="honors__chip">
+            <span class="honors__chip-year">{h.year}</span>
+            {h.text}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        let width = 0;
+        let height = 0;
+        const nodes: { x: number; y: number; vx: number; vy: number; r: number; hub: boolean }[] = [];
+        const resize = () => {
+          const rect = canvas.getBoundingClientRect();
+          width = rect.width; height = rect.height;
+          canvas.width = width * dpr; canvas.height = height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+        resize();
+        window.addEventListener('resize', resize);
+        const NODE_COUNT = 38;
+        for (let i = 0; i < NODE_COUNT; i++) {
+          nodes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25,
+            r: Math.random() < 0.2 ? 3 + Math.random() * 2 : 1 + Math.random() * 1.2,
+            hub: Math.random() < 0.2,
+          });
+        }
+        let raf = 0;
+        let running = true;
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { running = e.isIntersecting; });
+        });
+        io.observe(canvas);
+        const draw = () => {
+          if (!running) { raf = requestAnimationFrame(draw); return; }
+          ctx.clearRect(0, 0, width, height);
+          for (const n of nodes) {
+            n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > width) n.vx *= -1;
+            if (n.y < 0 || n.y > height) n.vy *= -1;
+          }
+          ctx.lineWidth = 0.6;
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const a = nodes[i]; const b = nodes[j];
+              const dx = a.x - b.x; const dy = a.y - b.y;
+              const d = Math.sqrt(dx * dx + dy * dy);
+              if (d < 118) {
+                const alpha = (1 - d / 118) * 0.35;
+                ctx.strokeStyle = `rgba(104, 211, 145, ${alpha})`;
+                ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+              }
+            }
+          }
+          for (const n of nodes) {
+            if (n.hub) {
+              ctx.fillStyle = 'rgba(104, 211, 145, 0.12)';
+              ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2); ctx.fill();
+            }
+            ctx.fillStyle = n.hub ? '#68D391' : 'rgba(69, 186, 172, 0.75)';
+            ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+          }
+          raf = requestAnimationFrame(draw);
+        };
+        raf = requestAnimationFrame(draw);
+      }
+    }
+  </script>
+
+  <style>
+    .hero {
+      position: relative; overflow: hidden;
+      background: var(--dark);
+      padding: 92px var(--content-padding) 100px;
+    }
+    .hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+    .hero__glow {
+      position: absolute; top: -30%; right: -8%; width: 720px; height: 720px;
+      pointer-events: none; border-radius: var(--radius-pill); filter: blur(10px);
+      background: radial-gradient(circle at 50% 50%, rgba(104,211,145,0.30), rgba(69,186,172,0.16) 38%, rgba(173,36,214,0.08) 62%, transparent 72%);
+      animation: heroDrift 18s ease-in-out infinite;
+    }
+    .hero__gradient {
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, var(--dark) 0%, rgba(36,41,40,0.82) 42%, rgba(36,41,40,0.30) 68%, transparent 82%);
+    }
+    .hero__inner { position: relative; z-index: 1; max-width: var(--content-max); width: 100%; margin: 0 auto; }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+      color: var(--green-mid); margin-bottom: 24px;
+    }
+    .hero__dot { width: 6px; height: 6px; border-radius: var(--radius-pill); background: var(--green-mid); display: inline-block; animation: pulseDot 2.4s ease-in-out infinite; }
+    .hero__title { font-family: var(--font-heading); font-weight: 500; font-size: 56px; line-height: 1.06; letter-spacing: -0.02em; color: var(--white); margin: 0; }
+    .hero__lede { font-family: var(--font-body); font-size: 20px; line-height: 1.55; color: rgba(255,255,255,0.72); max-width: 560px; margin: 26px 0 0; }
+    .hero__meta { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 34px; font-family: var(--font-heading); font-size: 14px; color: rgba(255,255,255,0.5); }
+    .hero__meta-dot { width: 4px; height: 4px; border-radius: var(--radius-pill); background: rgba(255,255,255,0.3); }
+
+    .mission { padding: 0 var(--content-padding) 40px; }
+    .mission__inner { max-width: var(--content-max); margin: 0 auto; }
+    .mission__card {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+      background: var(--teal-light); border: 1px solid rgba(46,142,132,0.18);
+      border-radius: var(--radius-card); padding: 20px 24px;
+    }
+    .mission__pill { font-family: var(--font-heading); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal-dark); background: var(--white); border-radius: var(--radius-pill); padding: 5px 12px; }
+    .mission__text { font-family: var(--font-body); font-size: 15px; color: var(--ink); }
+
+    .overview { padding: 72px var(--content-padding) 80px; border-top: 1px solid var(--hairline); background: var(--off-white); }
+    .overview__inner { max-width: var(--content-max); margin: 0 auto; }
+    .overview__grid { display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: start; }
+    .overview__label { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); padding-top: 6px; }
+    .overview__statement { font-family: var(--font-body); font-size: 22px; line-height: 1.5; color: var(--ink); font-weight: 400; margin: 0; }
+
+    .research { padding: var(--section-vertical) var(--content-padding); }
+    .research__inner { max-width: var(--content-max); margin: 0 auto; }
+    .research__header { margin-bottom: 40px; }
+    .research__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); margin-bottom: 12px; }
+    .research__title { font-family: var(--font-heading); font-weight: 500; font-size: 34px; line-height: 1.15; letter-spacing: -0.015em; color: var(--ink); margin: 0; max-width: 640px; }
+    .research__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    .area { display: flex; flex-direction: column; gap: 16px; background: var(--off-white); border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: 32px; }
+    .area__figure { background: var(--white); border: 1px solid var(--hairline); border-radius: var(--radius-button); padding: 16px; }
+    .area__figure svg { width: 100%; height: auto; display: block; }
+    .area__num { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--teal-dark); letter-spacing: 0.05em; }
+    .area__title { font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.25; color: var(--ink); letter-spacing: -0.01em; }
+    .area__desc { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--body); margin: 0; }
+    .area__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag { font-family: var(--font-heading); font-size: 11px; font-weight: 500; color: var(--teal-dark); background: var(--teal-light); border-radius: var(--radius-pill); padding: 5px 12px; }
+
+    .pubs { background: var(--dark); padding: var(--section-vertical) var(--content-padding); color: rgba(255,255,255,0.85); }
+    .pubs__inner { max-width: var(--content-max); margin: 0 auto; }
+    .pubs__header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+    .pubs__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-mid); }
+    .pubs__all { font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--green-mid); }
+    .pubs__all:hover { color: var(--white); }
+    .pubs__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+    .pubs__row { display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--border-on-dark); }
+    .pubs__row:last-child { border-bottom: 1px solid var(--border-on-dark); }
+    .pubs__year { font-family: var(--font-mono); font-size: 13px; color: rgba(255,255,255,0.5); padding-top: 2px; }
+    .pubs__title { font-family: var(--font-body); font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.9); }
+    .pubs__meta { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 6px; font-size: 13px; }
+    .pubs__authors { color: rgba(255,255,255,0.55); }
+    .pubs__venue { font-family: var(--font-heading); font-weight: 500; color: var(--green-mid); }
+    .pubs__note { color: rgba(255,255,255,0.4); font-style: italic; }
+
+    .news { padding: var(--section-vertical) var(--content-padding); background: var(--off-white); }
+    .news__inner { max-width: var(--content-max); margin: 0 auto; }
+    .news__header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+    .news__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); }
+    .news__all { font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--green-dark); }
+    .news__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .news__card { background: var(--white); border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: 24px; }
+    .news__date { font-family: var(--font-mono); font-size: 12px; color: var(--teal-dark); margin-bottom: 12px; }
+    .news__text { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin: 0; }
+
+    .honors { padding: 56px var(--content-padding) 88px; border-top: 1px solid var(--hairline); }
+    .honors__inner { max-width: var(--content-max); margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: start; }
+    .honors__label { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); padding-top: 6px; }
+    .honors__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .honors__chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 13px; color: var(--body);
+      background: var(--off-white); border: 1px solid var(--hairline);
+      border-radius: var(--radius-pill); padding: 6px 14px;
+    }
+    .honors__chip-year { font-family: var(--font-mono); font-size: 11px; color: var(--teal-dark); }
+
+    @media (max-width: 780px) {
+      .hero__title { font-size: 40px; }
+      .overview__grid, .honors__inner { grid-template-columns: 1fr; gap: 16px; }
+      .research__grid { grid-template-columns: 1fr; }
+      .news__grid { grid-template-columns: 1fr; }
+      .pubs__row { grid-template-columns: 48px 1fr; gap: 16px; }
+    }
+  </style>
+</BaseLayout>

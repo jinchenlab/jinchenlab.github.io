@@ -1,21 +1,4 @@
-_site
-.bundle
-.DS_store
-.idea
-.jekyll-cache
-.jekyll-metadata
-.ruby-version
-.sass-cache
-.tweet-cache
-.venv
-assets/libs/
-assets/rendercv/rendercv_output/*.typ
-al-folio-upgrade-report.md
-node_modules/
-output/playwright/
-test-results/
-vendor
-
-# Do not commit personal PDFs left at repo root (e.g., CVs with contact info).
-# Legitimate PDFs under assets/pdf/ are still tracked.
-/*.pdf
+node_modules
+dist
+.astro
+.DS_Store

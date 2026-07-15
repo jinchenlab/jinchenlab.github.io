@@ -1,0 +1,271 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  active?: 'research' | 'publications' | 'team' | 'news' | 'contact';
+}
+const {
+  title,
+  description = 'The Chen Lab at Altos Labs studies functional genomics of rejuvenation — cell states, the dark proteome, and high-throughput perturbation.',
+  active = 'research',
+} = Astro.props;
+
+const navItems = [
+  { href: '/',              label: 'Research',      id: 'research' },
+  { href: '/publications/', label: 'Publications',  id: 'publications' },
+  { href: '/team/',         label: 'Team',          id: 'team' },
+  { href: '/news/',         label: 'News',          id: 'news' },
+  { href: '/contact/',      label: 'Contact',       id: 'contact' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>"
+    />
+    <style is:global>@import '../styles/tokens.css';</style>
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="site-nav__inner">
+        <a href="/" class="site-nav__brand">
+          <span class="site-nav__brand-name">Chen Lab</span>
+          <span class="site-nav__brand-affil">Altos Labs</span>
+        </a>
+        <div class="site-nav__links">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`site-nav__link${item.id === active ? ' site-nav__link--active' : ''}`}
+            >
+              {item.label}
+              {item.id === active && <span class="site-nav__underline" aria-hidden="true"></span>}
+            </a>
+          ))}
+          <a href="/contact/" class="site-nav__cta">Join us</a>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <div class="site-footer__brand">
+            <span class="site-footer__brand-name">Chen Lab</span>
+            <span class="site-footer__brand-affil">Altos Labs</span>
+          </div>
+          <p class="site-footer__blurb">
+            Functional genomics of rejuvenation. We map the causal regulators of cell state — the programs that drive aging and disease, and the programs that can reverse them.
+          </p>
+        </div>
+        <div>
+          <div class="site-footer__heading">Explore</div>
+          <ul class="site-footer__list">
+            {navItems.map((item) => (
+              <li><a href={item.href}>{item.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__heading">Contact</div>
+          <ul class="site-footer__list">
+            <li><a href="mailto:jchen@altoslabs.com">jchen@altoslabs.com</a></li>
+            <li>Bay Area Institute of Science</li>
+            <li>2400 Bridge Parkway</li>
+            <li>Redwood City, CA 94065</li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© {new Date().getFullYear()} Chen Lab</span>
+        <span class="site-footer__disclaimer">
+          This website reflects only the views of the author and is not a publication of Altos Labs.
+        </span>
+      </div>
+    </footer>
+
+    <style>
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        height: var(--nav-height);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: saturate(140%) blur(10px);
+        -webkit-backdrop-filter: saturate(140%) blur(10px);
+        border-bottom: 1px solid var(--hairline);
+        display: flex;
+        align-items: center;
+      }
+      .site-nav__inner {
+        max-width: var(--content-max);
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 var(--content-padding);
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+      .site-nav__brand {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+      .site-nav__brand-name {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+      .site-nav__brand-affil {
+        font-family: var(--font-heading);
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--teal-dark);
+        letter-spacing: 0.02em;
+      }
+      .site-nav__links {
+        display: flex;
+        gap: 28px;
+        margin-left: auto;
+        align-items: center;
+      }
+      .site-nav__link {
+        position: relative;
+        font-family: var(--font-heading);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        padding: 8px 0;
+        transition: color var(--transition-fast);
+      }
+      .site-nav__link:hover { color: var(--ink); }
+      .site-nav__link--active { color: var(--green-dark); }
+      .site-nav__link--active:hover { color: var(--green-dark); }
+      .site-nav__underline {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 2px;
+        background: var(--green-dark);
+        border-radius: 2px;
+      }
+      .site-nav__cta {
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--white);
+        background: var(--green-dark);
+        border-radius: var(--radius-button);
+        padding: 9px 16px;
+        transition: background var(--transition-fast);
+      }
+      .site-nav__cta:hover {
+        color: var(--white);
+        background: var(--green-hover);
+      }
+
+      .site-footer {
+        background: var(--dark);
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 96px;
+      }
+      .site-footer__inner {
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 72px var(--content-padding) 48px;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 64px;
+      }
+      .site-footer__brand {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .site-footer__brand-name {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--white);
+      }
+      .site-footer__brand-affil {
+        font-family: var(--font-heading);
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--green-mid);
+        letter-spacing: 0.02em;
+      }
+      .site-footer__blurb {
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.65);
+        margin: 0;
+        max-width: 380px;
+      }
+      .site-footer__heading {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--green-mid);
+        margin-bottom: 16px;
+      }
+      .site-footer__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 14px;
+      }
+      .site-footer__list a {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .site-footer__list a:hover {
+        color: var(--green-mid);
+      }
+      .site-footer__bottom {
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 24px var(--content-padding) 40px;
+        border-top: 1px solid var(--border-on-dark);
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .site-footer__disclaimer {
+        max-width: 620px;
+      }
+      @media (max-width: 780px) {
+        .site-footer__inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+    </style>
+  </body>
+</html>

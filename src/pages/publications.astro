@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Pub = { year: string; authors: string; title: string; venue: string; note?: string; selected?: boolean };
+
+const eras: { label: string; affiliation: string; papers: Pub[] }[] = [
+  {
+    label: '2024 – present',
+    affiliation: 'Altos Labs · Bay Area Institute of Science',
+    papers: [
+      { year: '2026', selected: true, authors: 'Zhu K, Li WC, Liu J, … Chen J',      title: 'Functional landscape of non-canonical open reading frames in coordinating cell fate.', venue: 'Molecular Cell' },
+      { year: '2025', selected: true, authors: 'Lo YH, … Chen J*, Kuo CJ*',           title: 'Large-scale CRISPR screening in primary human 3D gastric organoids enables comprehensive dissection of gene-drug interactions.', venue: 'Nature Communications 16(1):7566', note: '* co-corresponding authors' },
+      { year: '2025', authors: 'Challa S, … Chen J, Kraus WL',                        title: 'RACK1 MARylation regulates translation and stress granules in ovarian cancer cells.', venue: 'Journal of Cell Biology 224(2):e202401101' },
+      { year: '2024', authors: 'Engel JL, … Chen J, Cortés-Ciriano I, Lo RS, Ly P',   title: 'The Fanconi anemia pathway induces chromothripsis and ecDNA-driven cancer drug resistance.', venue: 'Cell 187(21):6055–6070.e22' },
+      { year: '2024', authors: 'Hacisuleyman E, … Chen J, Weissman JS, Darnell RB',   title: 'Neuronal activity rapidly reprograms dendritic translation via eIF4G2:uORF binding.', venue: 'Nature Neuroscience 27(5):822–835' },
+      { year: '2024', authors: 'Li C, … Chen J, Wang ZV',                             title: 'IRE1α mediates hypertrophic growth of cardiomyocytes through initiation-complex formation on TOP-motif transcripts.', venue: 'Circulation 150(13):1010–1029' },
+    ],
+  },
+  {
+    label: '2020 – 2023',
+    affiliation: 'UT Southwestern Medical Center · Cecil H. and Ida Green Center · Simmons Cancer Center',
+    papers: [
+      { year: '2022', selected: true, authors: 'Wright BW, Yi Z, Weissman JS, Chen J', title: 'The dark proteome: translation from noncanonical open reading frames.', venue: 'Trends in Cell Biology 32(3):243–258' },
+      { year: '2022', authors: 'Wu D, … Chen J, … Weissman JS, Lim DA',                title: 'Dual genome-wide coding and lncRNA screens in neural induction of induced pluripotent stem cells.', venue: 'Cell Genomics 2(11):100177' },
+      { year: '2022', authors: 'Duffy EE, et al.',                                     title: 'Developmental dynamics of RNA translation in the human brain.', venue: 'Nature Neuroscience 25(10):1353–1365' },
+      { year: '2022', authors: 'Mudge JM, et al.',                                     title: 'Standardized annotation of translated open reading frames.', venue: 'Nature Biotechnology 40(7):994–999' },
+      { year: '2022', authors: 'Gleason AC, Ghadge G, Chen J, Sonobe Y, Roos RP',     title: 'Machine learning predicts translation initiation sites in neurologic diseases with nucleotide repeat expansions.', venue: 'PLoS One 17(6):e0256411' },
+      { year: '2021', selected: true, authors: 'Nuñez JK, Chen J, … Weissman JS',      title: 'Genome-wide programmable transcriptional memory by CRISPR-based epigenome editing.', venue: 'Cell 184(9):2503–2519' },
+      { year: '2021', authors: 'Chen CK, … Chen J, … Chang HY',                        title: 'Structured elements drive extensive circular RNA translation.', venue: 'Molecular Cell 81(20):4300–4318.e13' },
+      { year: '2021', authors: 'Lo YH, … Chen J, … Kuo CJ',                            title: 'A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation.', venue: 'Cancer Discovery 11(6):1562–1581' },
+      { year: '2020', selected: true, authors: 'Chen J, Brunner A-D, … Weissman JS',   title: 'Pervasive functional translation of noncanonical open reading frames.', venue: 'Science 367:1140–1146', note: 'Highlighted in Science; Nature Reviews Molecular Cell Biology; F1000 "exceptional"' },
+      { year: '2020', authors: 'Replogle JM, … Chen J, … Weissman JS, Adamson B',      title: 'Combinatorial single-cell CRISPR screens by direct guide RNA capture and targeted sequencing.', venue: 'Nature Biotechnology 38:954–961' },
+      { year: '2020', authors: 'Pai EL, Chen J*, Darbandi SF*, … Rubenstein JL',       title: 'Maf and Mafb control mouse pallial interneuron fate and maturation through neuropsychiatric disease gene regulation.', venue: 'eLife 9', note: '* co-second authors' },
+    ],
+  },
+  {
+    label: '2010 – 2016',
+    affiliation: 'Stanford (Ph.D., Puglisi lab) · UCSF (postdoc, Weissman lab) · Yale (undergrad)',
+    papers: [
+      { year: '2016', authors: 'Navon SP*, Kornberg G*, Chen J*, … Adir N',            title: 'The amino acid sequence repertoire of the bacterial proteome and the occurrence of untranslatable sequences.', venue: 'Proc. Natl. Acad. Sci. 113:7166–7170', note: '* co-first authors' },
+      { year: '2016', authors: 'Petrov A, Grosely R, Chen J, O’Leary SE, Puglisi JD', title: 'Multiple parallel pathways of translation initiation on CrPV IRES.', venue: 'Molecular Cell 62:92–103' },
+      { year: '2016', authors: 'Choi J, … Chen J, … Puglisi JD',                        title: 'N-methyladenosine in mRNA disrupts tRNA selection and translation-elongation dynamics.', venue: 'Nature Structural & Molecular Biology 23:110–115' },
+      { year: '2016', authors: 'Chen J*, Choi J*, O’Leary SE*, … Puglisi JD',      title: 'The molecular choreography of protein synthesis: translational control, regulation, and pathways.', venue: 'Quarterly Reviews of Biophysics 49', note: '* co-first authors' },
+      { year: '2015', selected: true, authors: 'Chen J, Coakley A, O’Connor M, … Puglisi JD', title: 'Coupling of mRNA structure rearrangement to ribosome movement during bypassing of non-coding regions.', venue: 'Cell 163:1267–1280' },
+      { year: '2015', authors: 'Fuchs G, … Chen J, … Puglisi JD',                       title: 'Kinetic pathway of 40S ribosomal subunit recruitment to hepatitis C virus internal ribosome entry site.', venue: 'Proc. Natl. Acad. Sci. 112:319–325' },
+      { year: '2014', selected: true, authors: 'Chen J, Petrov A, Johansson M, … Puglisi JD', title: 'Dynamic pathways of -1 translational frameshifting.', venue: 'Nature 512:328–332' },
+      { year: '2014', authors: 'Chen J*, Dalal RV*, … Puglisi JD',                      title: 'High-throughput platform for real-time monitoring of biological processes by multicolor single-molecule fluorescence.', venue: 'Proc. Natl. Acad. Sci. 111:664–669', note: '* co-first authors' },
+      { year: '2014', authors: 'Noriega TR, Chen J, Walter P, Puglisi JD',              title: 'Real-time observation of signal recognition particle binding to actively translating ribosomes.', venue: 'eLife 3' },
+      { year: '2014', authors: 'Noriega TR, … Chen J, … Walter P',                      title: 'Signal recognition particle-ribosome binding is sensitive to nascent chain length.', venue: 'J. Biol. Chem. 289:19294–19305' },
+      { year: '2014', authors: 'Johansson M, Chen J, … Puglisi JD',                     title: 'Sequence-dependent elongation dynamics on macrolide-bound ribosomes.', venue: 'Cell Reports 7:1534–1546' },
+      { year: '2014', authors: 'Tsai A, … Chen J, Puglisi JD',                          title: 'The dynamics of SecM-induced translational stalling.', venue: 'Cell Reports 7:1521–1533' },
+      { year: '2013', authors: 'Chen J, Petrov A, Tsai A, O’Leary SE, Puglisi JD', title: 'Coordinated conformational and compositional dynamics drive ribosome translocation.', venue: 'Nature Structural & Molecular Biology 20:718–727' },
+      { year: '2013', authors: 'O’Leary SE, Petrov A, Chen J, Puglisi JD',         title: 'Dynamic recognition of the mRNA cap by Saccharomyces cerevisiae eIF4E.', venue: 'Structure 21:2197–2207' },
+      { year: '2012', authors: 'Chen J, Tsai A, Petrov A, Puglisi JD',                  title: 'Nonfluorescent quenchers to correlate single-molecule conformational and compositional dynamics.', venue: 'Journal of the American Chemical Society 134:5734–5737' },
+      { year: '2012', authors: 'Chen J, Tsai A, O’Leary SE, Petrov A, Puglisi JD', title: 'Unraveling the dynamics of ribosome translocation.', venue: 'Current Opinion in Structural Biology 22:804–814' },
+      { year: '2012', authors: 'Petrov A, Chen J, O’Leary SE, Tsai A, Puglisi JD', title: 'Single-molecule analysis of translational dynamics.', venue: 'Cold Spring Harbor Perspectives in Biology 4' },
+      { year: '2010', authors: 'Rajan NK, Routenberg DA, Chen J, Reed MA',              title: 'Temperature dependence of 1/f noise mechanisms in silicon nanowire biochemical field effect transistors.', venue: 'Applied Physics Letters 97:243501' },
+      { year: '2010', authors: 'Rajan NK, Routenberg DA, Chen J, Reed MA',              title: '1/f noise of silicon nanowire BioFETs.', venue: 'IEEE Electron Device Letters 31:615–617' },
+    ],
+  },
+];
+
+const totalCount = eras.reduce((sum, era) => sum + era.papers.length, 0);
+---
+<BaseLayout title="Publications · Chen Lab" active="publications" description="Publications by the Chen Lab and prior work by Jin Chen, grouped by era.">
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="page-hero__eyebrow">Publications</div>
+      <h1 class="page-hero__title">Publications</h1>
+      <p class="page-hero__lede">
+        {totalCount} papers, grouped by era. Selected papers are highlighted with a star.
+        For the most current preprint list, see <a href="https://scholar.google.com/">Google Scholar</a> and <a href="https://www.biorxiv.org/">bioRxiv</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="pubs-list">
+    <div class="pubs-list__inner">
+      {eras.map((era) => (
+        <div class="era">
+          <div class="era__heading">
+            <h2 class="era__label">{era.label}</h2>
+            <div class="era__affil">{era.affiliation}</div>
+          </div>
+          <ol class="era__list">
+            {era.papers.map((p) => (
+              <li class="era__row">
+                <div class="era__year">
+                  {p.selected && <span class="era__star" aria-label="Selected paper">★</span>}
+                  <span>{p.year}</span>
+                </div>
+                <div class="era__body">
+                  <div class="era__title">{p.title}</div>
+                  <div class="era__meta">
+                    <span class="era__authors">{p.authors}</span>
+                    <span class="era__venue">{p.venue}</span>
+                  </div>
+                  {p.note && <div class="era__note">{p.note}</div>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .page-hero { padding: 88px var(--content-padding) 24px; }
+    .page-hero__inner { max-width: var(--content-max); margin: 0 auto; }
+    .page-hero__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); margin-bottom: 12px; }
+    .page-hero__title { font-family: var(--font-heading); font-weight: 500; font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin: 0; }
+    .page-hero__lede { font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--body); max-width: 720px; margin: 20px 0 0; }
+
+    .pubs-list { padding: 40px var(--content-padding) var(--section-vertical); }
+    .pubs-list__inner { max-width: var(--content-max); margin: 0 auto; }
+
+    .era { margin-bottom: 64px; }
+    .era__heading { margin-bottom: 24px; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
+    .era__label { font-family: var(--font-heading); font-weight: 500; font-size: 22px; color: var(--ink); margin: 0 0 4px; letter-spacing: -0.01em; }
+    .era__affil { font-family: var(--font-body); font-size: 13px; color: var(--text-secondary); }
+
+    .era__list { list-style: none; margin: 0; padding: 0; }
+    .era__row { display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--hairline); }
+    .era__row:first-child { border-top: 1px solid var(--hairline); }
+    .era__year { display: flex; align-items: baseline; gap: 6px; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); padding-top: 2px; }
+    .era__star { color: var(--green-dark); font-size: 14px; }
+    .era__title { font-family: var(--font-body); font-size: 15px; line-height: 1.5; color: var(--ink); margin-bottom: 6px; }
+    .era__meta { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; }
+    .era__authors { color: var(--text-secondary); }
+    .era__venue { font-family: var(--font-heading); font-weight: 500; color: var(--teal-dark); }
+    .era__note { font-family: var(--font-body); font-size: 12px; color: var(--placeholder); font-style: italic; margin-top: 6px; }
+
+    @media (max-width: 780px) {
+      .era__row { grid-template-columns: 52px 1fr; gap: 12px; }
+      .page-hero__title { font-size: 36px; }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,143 @@
+---
+const W = 960;
+const H = 480;
+
+const cells = [
+  { x: 480, y: 90,  r: 22, fill: '#F6A15A', glow: 'rgba(246,161,90,0.35)',  label: 'Pluripotent',              labelY: 60 },
+  { x: 300, y: 250, r: 18, fill: '#5B9AD8', glow: 'rgba(91,154,216,0.35)',  label: 'Intermediate (progenitor)', labelY: 220 },
+  { x: 660, y: 250, r: 18, fill: '#5B9AD8', glow: 'rgba(91,154,216,0.35)',  label: null,                       labelY: 220 },
+  { x: 180, y: 400, r: 18, fill: '#68D391', glow: 'rgba(104,211,145,0.35)', label: 'Differentiated',           labelY: 442 },
+  { x: 480, y: 400, r: 18, fill: '#B48CFB', glow: 'rgba(180,140,251,0.35)', label: null,                       labelY: 442 },
+  { x: 780, y: 400, r: 18, fill: '#F1D24F', glow: 'rgba(241,210,79,0.35)',  label: null,                       labelY: 442 },
+];
+
+const troughs = [
+  { x: 480, depth: 0.4 },
+  { x: 300, depth: 0.7 },
+  { x: 660, depth: 0.7 },
+  { x: 180, depth: 1.0 },
+  { x: 480, depth: 1.0 },
+  { x: 780, depth: 1.0 },
+];
+
+const NUM_CONTOURS = 52;
+const contourPaths: string[] = [];
+for (let idx = 0; idx < NUM_CONTOURS; idx++) {
+  const t = idx / (NUM_CONTOURS - 1);
+  const yBase = 70 + t * 340;
+  const depthMax = 60 * (0.2 + 0.8 * t);
+  const points: [number, number][] = [];
+  for (let x = 0; x <= W; x += 10) {
+    let y = yBase;
+    for (const trough of troughs) {
+      const dx = x - trough.x;
+      y += depthMax * trough.depth * Math.exp(-(dx * dx) / 2400);
+    }
+    points.push([x, y]);
+  }
+  let d = `M ${points[0][0].toFixed(1)} ${points[0][1].toFixed(1)}`;
+  for (let i = 1; i < points.length; i++) {
+    d += ` L ${points[i][0].toFixed(1)} ${points[i][1].toFixed(1)}`;
+  }
+  contourPaths.push(d);
+}
+
+const trajectories = [
+  { d: 'M 480 115 Q 400 180 320 232',     label: null, headed: true },
+  { d: 'M 480 115 Q 560 180 640 232',     label: null, headed: true },
+  { d: 'M 300 270 Q 240 320 200 382',     label: null, headed: true },
+  { d: 'M 300 270 Q 380 320 462 382',     label: null, headed: true },
+  { d: 'M 660 270 Q 720 320 762 382',     label: null, headed: true },
+  { d: 'M 180 380 Q 330 340 470 380',     label: 'transdifferentiation', headed: true, bowed: true },
+];
+
+const motionPaths = [
+  'M 480 115 Q 400 180 320 232',
+  'M 480 115 Q 560 180 640 232',
+  'M 180 380 Q 330 340 470 380',
+];
+---
+<figure style="margin: 52px 0 0;">
+  <div style="background: var(--dark); border-radius: 16px; padding: 16px; overflow: hidden;">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style="display:block; height:auto;" role="img" aria-labelledby="wad-title wad-desc">
+      <title id="wad-title">The Waddington epigenetic landscape</title>
+      <desc id="wad-desc">A dome-shaped surface drawn with stacked fine contour lines; a pluripotent cell sits at the peak; two intermediate progenitor cells sit in mid valleys; three differentiated cells sit in the deepest valleys. Green arrows trace differentiation paths downward and a single transdifferentiation arrow moves between two lower cells. Vertical arrows on the left (Development, pointing down) and right (Reprogramming, pointing up) frame the figure.</desc>
+
+      <defs>
+        <marker id="wadArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#68D391"></path>
+        </marker>
+        <marker id="wadArrowWhite" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF"></path>
+        </marker>
+      </defs>
+
+      <g>
+        {contourPaths.map((d, i) => (
+          <path
+            d={d}
+            fill="none"
+            stroke="#5FB5A4"
+            stroke-width="0.5"
+            opacity={0.10 + (i / NUM_CONTOURS) * 0.55}
+          />
+        ))}
+      </g>
+
+      <g>
+        {trajectories.map((tr) => (
+          <path
+            d={tr.d}
+            fill="none"
+            stroke="#68D391"
+            stroke-width={tr.bowed ? '1.4' : '1.8'}
+            stroke-dasharray={tr.bowed ? '4 4' : undefined}
+            opacity={tr.bowed ? '0.65' : '0.9'}
+            marker-end={tr.headed ? 'url(#wadArrow)' : undefined}
+          />
+        ))}
+      </g>
+
+      <g>
+        {motionPaths.map((mp) => (
+          <circle r="3" fill="#FFFFFF" opacity="0.85">
+            <animateMotion dur="10s" repeatCount="indefinite" path={mp}></animateMotion>
+          </circle>
+        ))}
+      </g>
+
+      {cells.map((c) => (
+        <g>
+          <circle cx={c.x} cy={c.y} r={c.r * 2.4} fill={c.glow} filter="blur(6px)"></circle>
+          <circle cx={c.x} cy={c.y + 3} r={c.r} fill="rgba(0,0,0,0.35)" filter="blur(3px)"></circle>
+          <circle cx={c.x} cy={c.y} r={c.r} fill={c.fill}></circle>
+          <ellipse cx={c.x - c.r * 0.35} cy={c.y - c.r * 0.4} rx={c.r * 0.45} ry={c.r * 0.25} fill="rgba(255,255,255,0.55)"></ellipse>
+        </g>
+      ))}
+
+      {cells.filter(c => c.label).map((c) => (
+        <text
+          x={c.x}
+          y={c.labelY}
+          text-anchor="middle"
+          font-family="Figtree, sans-serif"
+          font-size="13"
+          font-weight="500"
+          fill="rgba(255,255,255,0.85)"
+        >{c.label}</text>
+      ))}
+
+      <g>
+        <line x1="40" y1="80" x2="40" y2="410" stroke="#FFFFFF" stroke-width="1.5" marker-end="url(#wadArrowWhite)"></line>
+        <text x="24" y="245" text-anchor="middle" font-family="Figtree, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" letter-spacing="0.06em" transform="rotate(-90 24 245)">DEVELOPMENT</text>
+      </g>
+      <g>
+        <line x1={W - 40} y1="410" x2={W - 40} y2="80" stroke="#FFFFFF" stroke-width="1.5" marker-end="url(#wadArrowWhite)"></line>
+        <text x={W - 24} y="245" text-anchor="middle" font-family="Figtree, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" letter-spacing="0.06em" transform={`rotate(90 ${W - 24} 245)`}>REPROGRAMMING</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption style="font-family: var(--font-body); font-size: 13px; color: var(--placeholder); margin: 14px 2px 0;">
+    The Waddington epigenetic landscape. A pluripotent cell descends through intermediate (progenitor) states into differentiated cell types; reprogramming and transdifferentiation move cells the other way. Our tools map the regulatory forces that shape these transitions.
+  </figcaption>
+</figure>
