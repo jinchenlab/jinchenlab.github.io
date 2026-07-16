@@ -31,6 +31,13 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
+      - name: Ensure .nojekyll exists in dist
+        # GitHub Pages runs Jekyll by default, which strips directories starting
+        # with _ (including Astro's _astro/ CSS+JS output). A zero-byte .nojekyll
+        # tells GitHub Pages to serve the static build verbatim. Some deploy
+        # actions drop dotfiles, so touch it explicitly to be safe.
+        run: touch dist/.nojekyll
+
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
