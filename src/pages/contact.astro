@@ -1,22 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const positions = [
-  { role: 'Postdoctoral fellow', detail: 'Molecular biology, RNA biology, single-cell / spatial methods, CRISPR perturbation screens, or quantitative/computational biology.' },
-  { role: 'Staff scientist', detail: 'Experienced experimentalists or computational scientists ready to lead technology development in one of our four directions.' },
-  { role: 'Graduate students', detail: 'We consider rotation students through Bay Area partner programs and welcome inquiries from UT Southwestern trainees.' },
-];
 ---
-<BaseLayout title="Contact · Chen Lab" active="contact" description="How to reach the Chen Lab at Altos Labs — email, address, and open positions.">
+<BaseLayout title="Contact · Chen Lab" active="contact" description="How to reach the Chen Lab at Altos Labs.">
   <section class="page-hero">
     <div class="page-hero__inner">
       <div class="page-hero__eyebrow">Contact</div>
       <h1 class="page-hero__title">Get in touch</h1>
-      <p class="page-hero__lede">
-        Email is the fastest way to reach us — for scientific correspondence, collaborations,
-        or applications. For prospective trainees, please review the open-positions panel
-        before writing.
-      </p>
     </div>
   </section>
 
@@ -25,45 +14,20 @@ const positions = [
       <div class="contact__left">
         <div class="contact__label">Reach the lab</div>
         <dl class="contact__list">
-          <dt>Email</dt>
-          <dd>jchen [at] altoslabs.com</dd>
-
           <dt>Lab address</dt>
           <dd>
             Altos Labs, Bay Area Institute of Science<br />
             2400 Bridge Parkway<br />
             Redwood City, CA 94065
           </dd>
-
-          <dt>Elsewhere</dt>
-          <dd>
-            <a href="https://www.linkedin.com/in/jinpchen/" target="_blank" rel="noopener">LinkedIn</a><br />
-            <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a><br />
-            <a href="https://github.com/jinchenlab" target="_blank" rel="noopener">GitHub — jinchenlab</a>
-          </dd>
         </dl>
-
-        <div class="contact__note">
-          For press or collaboration inquiries, please email directly. We aim to respond
-          within a week.
-        </div>
       </div>
 
       <aside class="contact__panel">
-        <div class="contact__panel-eyebrow">Open positions</div>
-        <h2 class="contact__panel-title">We&rsquo;re hiring</h2>
-        <ul class="contact__positions">
-          {positions.map((p) => (
-            <li>
-              <div class="contact__position-role">
-                {p.role}
-                <span class="contact__position-arrow" aria-hidden="true">→</span>
-              </div>
-              <div class="contact__position-detail">{p.detail}</div>
-            </li>
-          ))}
-        </ul>
-        <div class="contact__cta contact__cta--static">jchen [at] altoslabs.com</div>
+        <a
+          href="javascript:void(0)"
+          onclick="location.href='mailto:'+atob('amNoZW5AYWx0b3NsYWJzLmNvbQ==');"
+          class="contact__cta">Contact us</a>
       </aside>
     </div>
   </section>
@@ -73,7 +37,6 @@ const positions = [
     .page-hero__inner { max-width: var(--content-max); margin: 0 auto; }
     .page-hero__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); margin-bottom: 12px; }
     .page-hero__title { font-family: var(--font-heading); font-weight: 500; font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin: 0; }
-    .page-hero__lede { font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--body); max-width: 620px; margin: 20px 0 0; }
 
     .contact { padding: 56px var(--content-padding) var(--section-vertical); }
     .contact__inner { max-width: var(--content-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
@@ -81,21 +44,30 @@ const positions = [
     .contact__list { margin: 0; padding: 0; display: grid; grid-template-columns: 140px 1fr; gap: 20px 24px; }
     .contact__list dt { font-family: var(--font-heading); font-size: 13px; font-weight: 500; color: var(--text-secondary); }
     .contact__list dd { margin: 0; font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--body); }
-    .contact__note { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--hairline); font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); max-width: 480px; }
 
-    .contact__panel { background: var(--dark); color: rgba(255,255,255,0.85); border-radius: var(--radius-card); padding: 32px; }
-    .contact__panel-eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-mid); margin-bottom: 8px; }
-    .contact__panel-title { font-family: var(--font-heading); font-weight: 500; font-size: 22px; line-height: 1.2; color: var(--white); margin: 0 0 24px; }
-    .contact__positions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; margin-bottom: 28px; }
-    .contact__positions li { padding-bottom: 20px; border-bottom: 1px solid var(--border-on-dark); }
-    .contact__positions li:last-child { border-bottom: none; padding-bottom: 0; }
-    .contact__position-role { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
-    .contact__position-arrow { color: var(--green-mid); font-size: 18px; }
-    .contact__position-detail { font-family: var(--font-body); font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.65); }
-    .contact__cta { display: block; text-align: center; font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--white); background: var(--green-dark); border-radius: var(--radius-button); padding: 12px 20px; transition: background var(--transition-fast); }
-    .contact__cta:hover { color: var(--white); background: var(--green-hover); }
-    .contact__cta--static { background: rgba(104, 211, 145, 0.15); color: var(--green-mid); font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.02em; user-select: all; }
-    .contact__cta--static:hover { background: rgba(104, 211, 145, 0.15); color: var(--green-mid); }
+    .contact__panel {
+      background: var(--teal-light);
+      border: 1px solid rgba(46, 142, 132, 0.18);
+      border-radius: var(--radius-card);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact__cta {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      background: var(--green-dark);
+      border-radius: var(--radius-button);
+      padding: 12px 20px;
+      transition: background var(--transition-fast);
+    }
+    .contact__cta:hover {
+      color: var(--white);
+      background: var(--green-hover);
+    }
 
     @media (max-width: 780px) {
       .contact__inner { grid-template-columns: 1fr; gap: 40px; }

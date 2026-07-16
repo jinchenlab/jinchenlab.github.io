@@ -92,17 +92,6 @@ const alumni = [
     </div>
   </section>
 
-  <section class="join">
-    <div class="join__inner">
-      <div class="join__card join__card--minimal">
-        <a
-          href="javascript:void(0)"
-          onclick="location.href='mailto:'+atob('amNoZW5AYWx0b3NsYWJzLmNvbQ==');"
-          class="join__cta">Contact us</a>
-      </div>
-    </div>
-  </section>
-
   <style>
     .page-hero { padding: 88px var(--content-padding) 24px; }
     .page-hero__inner { max-width: var(--content-max); margin: 0 auto; }
@@ -141,16 +130,6 @@ const alumni = [
     .alumni__name { font-family: var(--font-heading); font-weight: 500; font-size: 15px; color: var(--ink); }
     .alumni__role { font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); }
     .alumni__current { font-family: var(--font-body); font-size: 13px; color: var(--placeholder); font-style: italic; }
-
-    .join { padding: 24px var(--content-padding) var(--section-vertical); }
-    .join__inner { max-width: var(--content-max); margin: 0 auto; }
-    .join__card { background: var(--teal-light); border: 1px solid rgba(46,142,132,0.18); border-radius: var(--radius-card); padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .join__card--minimal { justify-content: center; padding: 40px 32px; }
-    .join__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal-dark); margin-bottom: 8px; }
-    .join__title { font-family: var(--font-heading); font-weight: 500; font-size: 22px; color: var(--ink); margin: 0 0 8px; }
-    .join__text { font-family: var(--font-body); font-size: 14px; color: var(--body); margin: 0; max-width: 480px; }
-    .join__cta { font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--white); background: var(--green-dark); border-radius: var(--radius-button); padding: 12px 20px; transition: background var(--transition-fast); }
-    .join__cta:hover { color: var(--white); background: var(--green-hover); }
 
     @media (max-width: 780px) {
       .pi__card { grid-template-columns: 1fr; }
