@@ -1,15 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const news = [
+type NewsItem = { date: string; text: string; image?: string; alt?: string; imageStyle?: 'logo' | 'photo' };
+
+const news: NewsItem[] = [
   { date: 'May 19, 2026',  text: 'A new site, and a sharper focus. Since moving to Altos Labs in 2022, our research has expanded from translational control into the broader question of how cell states are set, maintained, and reversed — with microproteins and high-throughput perturbation as our two main levers. The website is finally caught up with where the lab actually is.' },
   { date: 'Mar 5, 2026',   text: 'Jin gave an invited talk at Perturb2026 in Vienna — Large-scale Perturb-seq in primary human disease models: disease-reversal programs and virtual cell perturbation mapping. First full public airing of the lab’s virtual-cell effort.' },
   { date: 'Jan 30, 2026',  text: 'Our paper on the functional landscape of non-canonical open reading frames in coordinating cell fate is out in Molecular Cell. Congratulations to Kaiyuan and the team — this is the first flagship paper from the Altos-era lab.' },
   { date: 'Nov 4, 2025',   text: 'Yi-Hsuan Lo’s paper on large-scale CRISPR screening in primary human 3D gastric organoids is out in Nature Communications — a long-running collaboration with the Kuo lab at Stanford.' },
   { date: 'Jun 15, 2025',  text: 'Jin gave an invited talk at the Keystone Symposium "Microproteins: from Discovery to Applications" — Coding or non-coding? Illuminating the "dark matter" of the proteome.' },
+
+  { date: 'Aug 2022',      text: 'Jin was awarded the NIH DP2 New Innovator Award (declined).' },
+  { date: 'May 30, 2022',  text: 'Fiona leaves for medical school — best of luck, Fiona! The lab moves to Altos Labs in Redwood City, California.', image: '/images/news/altos-logo.webp', alt: 'Altos Labs logo', imageStyle: 'logo' },
+  { date: 'Mar 2022',      text: 'Jin is named a Searle Scholar (declined).', image: '/images/news/searle-scholar-logo.webp', alt: 'Searle Scholars Program logo', imageStyle: 'logo' },
+  { date: 'Jan 20, 2022',  text: 'Wan-Chen Li joins the lab as a postdoc.' },
+
+  { date: 'Sep 14, 2021',  text: 'Kaiyuan Zhu joins the lab as a postdoc.' },
+  { date: 'Aug 31, 2021',  text: 'Brad Wright and Fiona Yi join the lab.' },
+
+  { date: 'Oct 5, 2020',   text: 'The Chen lab is open at UT Southwestern!', image: '/images/news/lab-opening-utsw.webp', alt: 'Chen lab at UT Southwestern, lab opening', imageStyle: 'photo' },
+  { date: 'Aug 19, 2020',  text: 'Jin is awarded the First-Time, Tenure-Track Faculty Recruitment Award from CPRIT.' },
+  { date: 'May 14, 2020',  text: 'Jin is selected as an Endowed Scholar at UT Southwestern.' },
 ];
 ---
-<BaseLayout title="News · Chen Lab" active="news" description="Recent updates from the Chen Lab — papers, talks, personnel.">
+<BaseLayout title="News · Chen Lab" active="news" description="Recent updates from the Chen Lab — papers, talks, personnel, awards.">
   <section class="page-hero">
     <div class="page-hero__inner">
       <div class="page-hero__eyebrow">News</div>
@@ -25,7 +39,17 @@ const news = [
       {news.map((n) => (
         <article class="timeline__row">
           <div class="timeline__date">{n.date}</div>
-          <p class="timeline__text">{n.text}</p>
+          <div class="timeline__body">
+            <p class="timeline__text">{n.text}</p>
+            {n.image && (
+              <img
+                src={n.image}
+                alt={n.alt}
+                class={`timeline__image timeline__image--${n.imageStyle ?? 'photo'}`}
+                loading="lazy"
+              />
+            )}
+          </div>
         </article>
       ))}
     </div>
@@ -43,7 +67,11 @@ const news = [
     .timeline__row { display: grid; grid-template-columns: 120px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--hairline); }
     .timeline__row:last-child { border-bottom: 1px solid var(--hairline); }
     .timeline__date { font-family: var(--font-mono); font-size: 13px; color: var(--teal-dark); padding-top: 4px; }
+    .timeline__body { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
     .timeline__text { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); margin: 0; }
+    .timeline__image { display: block; border-radius: var(--radius-card); border: 1px solid var(--hairline); background: var(--white); }
+    .timeline__image--logo { max-width: 200px; max-height: 110px; object-fit: contain; padding: 10px 14px; background: var(--off-white); }
+    .timeline__image--photo { max-width: 100%; height: auto; }
 
     @media (max-width: 780px) {
       .timeline__row { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
