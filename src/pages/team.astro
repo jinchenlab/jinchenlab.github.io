@@ -30,8 +30,8 @@ const alumni = [
   <section class="pi">
     <div class="pi__inner">
       <div class="pi__card">
-        <div class="pi__photo" aria-label="Photo of Jin Chen — placeholder">
-          <span class="pi__photo-initials">JC</span>
+        <div class="pi__photo">
+          <img src="/images/team/jin-chen.webp" alt="Portrait of Jin Chen" width="400" height="400" />
         </div>
         <div class="pi__body">
           <div class="pi__eyebrow">Principal Investigator</div>
@@ -102,7 +102,8 @@ const alumni = [
     .pi { padding: 48px var(--content-padding); }
     .pi__inner { max-width: var(--content-max); margin: 0 auto; }
     .pi__card { background: var(--off-white); border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: 32px; display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; }
-    .pi__photo { width: 180px; height: 180px; border-radius: var(--radius-card); background: linear-gradient(135deg, var(--teal-light) 0%, var(--green-light) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 44px; font-weight: 500; color: var(--teal-dark); }
+    .pi__photo { width: 180px; height: 180px; border-radius: var(--radius-card); overflow: hidden; background: var(--off-white); }
+    .pi__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .pi__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--green-dark); margin-bottom: 8px; }
     .pi__name { font-family: var(--font-heading); font-weight: 500; font-size: 28px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
     .pi__roles { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
