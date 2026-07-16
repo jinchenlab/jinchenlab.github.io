@@ -26,7 +26,7 @@ const positions = [
         <div class="contact__label">Reach the lab</div>
         <dl class="contact__list">
           <dt>Email</dt>
-          <dd><a href="mailto:jchen@altoslabs.com">jchen@altoslabs.com</a></dd>
+          <dd>jchen [at] altoslabs.com</dd>
 
           <dt>Lab address</dt>
           <dd>
@@ -63,7 +63,7 @@ const positions = [
             </li>
           ))}
         </ul>
-        <a href="mailto:jchen@altoslabs.com?subject=Chen%20Lab%20application" class="contact__cta">Email the lab</a>
+        <div class="contact__cta contact__cta--static">jchen [at] altoslabs.com</div>
       </aside>
     </div>
   </section>
@@ -94,6 +94,8 @@ const positions = [
     .contact__position-detail { font-family: var(--font-body); font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.65); }
     .contact__cta { display: block; text-align: center; font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--white); background: var(--green-dark); border-radius: var(--radius-button); padding: 12px 20px; transition: background var(--transition-fast); }
     .contact__cta:hover { color: var(--white); background: var(--green-hover); }
+    .contact__cta--static { background: rgba(104, 211, 145, 0.15); color: var(--green-mid); font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.02em; user-select: all; }
+    .contact__cta--static:hover { background: rgba(104, 211, 145, 0.15); color: var(--green-mid); }
 
     @media (max-width: 780px) {
       .contact__inner { grid-template-columns: 1fr; gap: 40px; }
