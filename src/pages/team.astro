@@ -2,18 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const members = [
-  { name: 'Shi-An Chen',            role: 'Scientist',                          since: '2022 – present', initials: 'SC' },
-  { name: 'Elmer Guzman',           role: 'Scientist',                          since: '2022 – present', initials: 'EG' },
-  { name: 'Wan-Chen Li, Ph.D.',     role: 'Postdoctoral scholar / Scientist',   since: '2022 – present', initials: 'WL' },
-  { name: 'Jamin Liu',              role: 'Scientist',                          since: '2022 – present', initials: 'JL' },
-  { name: 'Katie Page',             role: 'Scientist',                          since: '2023 – present', initials: 'KP' },
-  { name: 'Mia Pulos-Holmes, Ph.D.',role: 'Scientist',                          since: '2022 – present', initials: 'MP' },
-  { name: 'Brad Wright, Ph.D.',     role: 'Postdoctoral scholar / Scientist',   since: '2021 – present', initials: 'BW' },
-  { name: 'Kaiyuan Zhu, Ph.D.',     role: 'Postdoctoral scholar / Scientist',   since: '2021 – present', initials: 'KZ' },
+  { name: 'Shi-An Chen',        role: 'Scientist',                          since: '2022 – present', initials: 'SC' },
+  { name: 'Elmer Guzman',       role: 'Scientist',                          since: '2022 – present', initials: 'EG' },
+  { name: 'Wan-Chen Li',        role: 'Postdoctoral scholar / Scientist',   since: '2022 – present', initials: 'WL' },
+  { name: 'Jamin Liu',          role: 'Scientist',                          since: '2022 – present', initials: 'JL' },
+  { name: 'Katie Page',         role: 'Scientist',                          since: '2023 – present', initials: 'KP' },
+  { name: 'Mia Pulos-Holmes',   role: 'Scientist',                          since: '2022 – present', initials: 'MP' },
+  { name: 'Kaiyuan Zhu',        role: 'Postdoctoral scholar / Scientist',   since: '2021 – present', initials: 'KZ' },
 ];
 
 const alumni = [
-  { name: 'Fiona Yi', role: 'Research Technician (2021 – 2022)', current: 'Currently in medical school' },
+  { name: 'Brad Wright', role: 'Postdoctoral scholar / Scientist (2021 – 2023)', current: '' },
+  { name: 'Fiona Yi',    role: 'Research Technician (2021 – 2022)',              current: 'Currently in medical school' },
 ];
 ---
 <BaseLayout title="Team · Chen Lab" active="team" description="The people who make the Chen Lab's science happen.">
@@ -22,9 +22,7 @@ const alumni = [
       <div class="page-hero__eyebrow">Team</div>
       <h1 class="page-hero__title">The people who make it happen</h1>
       <p class="page-hero__lede">
-        A small, computationally-leaning lab built around close mentorship and shared
-        ownership of projects. Lab members come from biology, computer science, physics,
-        and engineering backgrounds.
+        An interdisciplinary lab built around close mentorship and shared ownership of projects.
       </p>
     </div>
   </section>
@@ -37,7 +35,7 @@ const alumni = [
         </div>
         <div class="pi__body">
           <div class="pi__eyebrow">Principal Investigator</div>
-          <h2 class="pi__name">Jin Chen, Ph.D.</h2>
+          <h2 class="pi__name">Jin Chen</h2>
           <div class="pi__roles">
             <div>Principal Investigator, Altos Labs · Bay Area Institute of Science</div>
             <div>Assistant Professor, Department of Pharmacology · Cecil H. and Ida Green Center · Harold C. Simmons Comprehensive Cancer Center · University of Texas Southwestern Medical Center</div>
@@ -56,7 +54,6 @@ const alumni = [
             joined Altos Labs as a Principal Investigator in 2022 to lead his rejuvenation
             and cell-state biology program at scale.
           </p>
-          <div class="pi__email">jchen [at] altoslabs.com</div>
         </div>
       </div>
     </div>
@@ -97,16 +94,11 @@ const alumni = [
 
   <section class="join">
     <div class="join__inner">
-      <div class="join__card">
-        <div>
-          <div class="join__eyebrow">Join us</div>
-          <h2 class="join__title">Interested in joining the lab?</h2>
-          <p class="join__text">
-            We&rsquo;re actively recruiting postdocs and staff scientists. See the Contact
-            page for open positions and how to apply.
-          </p>
-        </div>
-        <a href="/contact/" class="join__cta">Contact us →</a>
+      <div class="join__card join__card--minimal">
+        <a
+          href="javascript:void(0)"
+          onclick="location.href='mailto:'+atob('amNoZW5AYWx0b3NsYWJzLmNvbQ==');"
+          class="join__cta">Contact us</a>
       </div>
     </div>
   </section>
@@ -153,6 +145,7 @@ const alumni = [
     .join { padding: 24px var(--content-padding) var(--section-vertical); }
     .join__inner { max-width: var(--content-max); margin: 0 auto; }
     .join__card { background: var(--teal-light); border: 1px solid rgba(46,142,132,0.18); border-radius: var(--radius-card); padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .join__card--minimal { justify-content: center; padding: 40px 32px; }
     .join__eyebrow { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal-dark); margin-bottom: 8px; }
     .join__title { font-family: var(--font-heading); font-weight: 500; font-size: 22px; color: var(--ink); margin: 0 0 8px; }
     .join__text { font-family: var(--font-body); font-size: 14px; color: var(--body); margin: 0; max-width: 480px; }
