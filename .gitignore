@@ -2,3 +2,8 @@ node_modules
 dist
 .astro
 .DS_Store
+
+# npm cache / log artifacts that can end up here if the cache path is misdirected
+_cacache
+_logs
+_update-notifier-last-checked
